@@ -2,13 +2,21 @@
 
 Backend is implemented with Django + DRF based on `docs/food-review-app-plan.md`.
 
-## Run with Docker
+## Run locally (Docker)
 
 ```bash
 docker compose up --build
 ```
 
 API base: `http://localhost:8000/api/v1`
+
+## Deploy from GitHub
+
+This repository is now deploy-ready for Render via `render.yaml`.
+
+- Deploy instructions: `docs/deploy-guide.md`
+- Production server: `gunicorn` via `backend/entrypoint.sh`
+- Health check: `GET /api/v1/health`
 
 ## Implemented endpoints
 - `GET /api/v1/health`
