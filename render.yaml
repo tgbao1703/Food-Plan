@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: foodplan-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    autoDeploy: true
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: DEBUG
+        value: "0"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: foodplan-backend.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: foodplan-db
+          property: connectionString
+
+databases:
+  - name: foodplan-db
+    databaseName: foodplan
+    user: foodplan
